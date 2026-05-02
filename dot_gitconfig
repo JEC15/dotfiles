@@ -1,0 +1,11 @@
+[user]
+	name = JEC15
+	email = 86543250+JEC15@users.noreply.github.com
+[init]
+	defaultBranch = main
+[color]
+	ui = auto
+[pull]
+	rebase = false
+[core]
+	editor = helix
