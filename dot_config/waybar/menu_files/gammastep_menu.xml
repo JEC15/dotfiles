@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="GtkMenu" id="menu">
+	<child>
+		<object class="GtkMenuItem" id="3500k">
+			<property name="label">3500K</property>
+        </object>
+	</child>
+	<child>
+        <object class="GtkMenuItem" id="4000k">
+			<property name="label">4000K</property>
+        </object>
+	</child>
+    <child>
+        <object class="GtkMenuItem" id="5000k">
+			<property name="label">5000K</property>
+        </object>
+    </child>
+    <child>
+		<object class="GtkMenuItem" id="6500k">
+			<property name="label">6500K</property>
+		</object>
+    </child>
+  </object>
+</interface>

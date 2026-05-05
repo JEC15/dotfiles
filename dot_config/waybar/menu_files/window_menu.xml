@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="GtkMenu" id="menu">
+		<child>
+			<object class="GtkMenuItem" id="move_to_scratchpad">
+				<property name="label">  󰖰  </property>
+	        </object>
+		</child>
+		<child>
+	        <object class="GtkMenuItem" id="kill_window">
+				<property name="label">  󰖭  </property>
+	        </object>
+		</child>
+		<child>
+		    <object class="GtkMenuItem" id="toggle_float">
+			<property name="label">  󰁌  </property>
+		    </object>
+		</child>
+		<child>
+		    <object class="GtkMenuItem" id="toggle_border">
+			<property name="label">    </property>
+		    </object>
+		</child>
+		<child>
+		    <object class="GtkMenuItem" id="send_to_workspace_1">
+			<property name="label"> 1</property>
+		    </object>
+		</child>
+		<child>
+		    <object class="GtkMenuItem" id="send_to_workspace_2">
+			<property name="label"> 2</property>
+		    </object>
+		</child>
+		<child>
+		    <object class="GtkMenuItem" id="send_to_workspace_3">
+			<property name="label"> 3</property>
+		    </object>
+		</child>
+		<child>
+		    <object class="GtkMenuItem" id="send_to_workspace_4">
+			<property name="label"> 4</property>
+		    </object>
+		</child>
+		<child>
+		    <object class="GtkMenuItem" id="send_to_workspace_5">
+			<property name="label"> 5</property>
+		    </object>
+		</child>
+		<child>
+		    <object class="GtkMenuItem" id="send_to_workspace_6">
+			<property name="label"> 6</property>
+		    </object>
+		</child>
+		<child>
+		    <object class="GtkMenuItem" id="send_to_workspace_7">
+			<property name="label"> 7</property>
+		    </object>
+		</child>
+		<child>
+		    <object class="GtkMenuItem" id="send_to_workspace_8">
+			<property name="label"> 8</property>
+		    </object>
+		</child>
+		<child>
+		    <object class="GtkMenuItem" id="send_to_workspace_9">
+			<property name="label"> 9</property>
+		    </object>
+		</child>
+		<child>
+		    <object class="GtkMenuItem" id="send_to_workspace_10">
+			<property name="label"> 10</property>
+		    </object>
+		</child>
+  </object>
+</interface>

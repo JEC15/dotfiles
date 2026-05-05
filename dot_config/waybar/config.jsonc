@@ -1,0 +1,428 @@
+// -*- mode: jsonc -*-
+{
+    "exclusive": true,
+    "layer": "top",
+    "height": 24,
+    "spacing": 0,
+
+    "modules-left": [
+        // "cffi/applauncher",
+        "custom/applications_menu",
+        "cpu",
+        "temperature#cpu0",
+        "temperature#cpu1",
+        "memory",
+        "disk",
+        "network"
+    ],
+    "modules-center": [
+        "custom/next_empty_workspace",
+        "sway/workspaces",
+        "sway/mode",
+        "sway/scratchpad"
+    ],
+    "modules-right": [
+        "custom/focused_window",
+        "custom/weather",
+        "wireplumber",
+        // "custom/easyeffectspreset",
+        "clock",
+        "custom/clipboard",
+        "custom/wvkbd",
+        "custom/gammastep",
+        "custom/powermenu",
+	      "tray"
+    ],
+
+    "cffi/applauncher": {
+        "module_path": "/home/jec/.config/waybar/applauncher.so",
+    },
+
+    "custom/applications_menu": {
+        "tooltip": false,
+        "format": "󰍜",
+        "on-click": "rofi -show drun -theme ~/.config/rofi/waybar_launcher_menu.rasi"
+    },
+
+    "cpu": {
+        //"format": " {usage}%",
+        "format": "{usage:>3}%",
+        "format-icons": "",
+        "interval": 1
+    },
+
+    "temperature#cpu0": {
+        "tooltip":false,
+        "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp2_input",
+        "critical-threshold": 65,
+        "interval": 2,
+        "format-critical": "{temperatureC}°C",
+        "format": "{temperatureC}°C"
+    },
+
+    "temperature#cpu1": {
+        "tooltip": false,
+        "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp3_input",
+        "critical-threshold": 65,
+        "interval": 2,
+        "format-critical": "{temperatureC}°C",
+        "format": "{temperatureC}°C"
+    },
+
+    "memory": {
+        //"format": " {used}GiB",
+        "tooltip": true,
+        "tooltip-format": "{avail}GiB available out of {total}GiB total",
+        "format": "{used:>4}GiB",
+        "format-icons": "",
+        "interval": 2
+    },
+
+    "disk": {
+        "path": "/",
+        "interval": 30,
+        "format": "{free}",
+        //"format": "{icon} {free}",
+        "format-icons": ""
+    },
+
+    "network": {
+        "tooltip": false,
+        // "interface": "wlp2s0", // (Optional) To force the use of this interface
+        //"format": "⚠  Disabled",
+        //"format-wifi": "  {bandwidthDownBytes}|{bandwidthUpBytes}",
+        //"format-ethernet": "  Wired",
+        //"format-disconnected": "⚠  Disconnected",
+        "format": "Disabled",
+        "format-wifi": "{bandwidthDownBytes}{bandwidthUpBytes:>1}",
+        "format-ethernet": "Wired",
+        "format-disconnected": "Disconnected",
+        "interval": 1
+        // "on-click": "foot -e nmtui"
+        //"on-click": "nm-connection-editor"
+        // "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
+    },
+
+    "custom/focused_window": {
+        "exec": "~/.local/bin/get_focused_sway_window_name.sh",
+        "tooltip": true,
+        "max-length": 30,
+        "format": "{}",
+        "hide-empty-text": true,
+        "on-scroll-up": "~/.local/bin/cycle_sway_windows.py window prev",
+        "on-scroll-down": "~/.local/bin/cycle_sway_windows.py window next",
+        "menu": "on-click",
+        "menu-file": "~/.config/waybar/menu_files/window_menu.xml",
+        "menu-actions": {
+            "move_to_scratchpad": "~/.local/bin/get_focused_sway_window_con_id.sh move_to_scratchpad",
+            "kill_window": "~/.local/bin/get_focused_sway_window_con_id.sh kill_window",
+            "toggle_float": "~/.local/bin/get_focused_sway_window_con_id.sh toggle_float",
+            "toggle_border": "~/.local/bin/get_focused_sway_window_con_id.sh toggle_border",
+            "send_to_workspace_1": "~/.local/bin/get_focused_sway_window_con_id.sh send_to_workspace 1",
+            "send_to_workspace_2": "~/.local/bin/get_focused_sway_window_con_id.sh send_to_workspace 2",
+            "send_to_workspace_3": "~/.local/bin/get_focused_sway_window_con_id.sh send_to_workspace 3",
+            "send_to_workspace_4": "~/.local/bin/get_focused_sway_window_con_id.sh send_to_workspace 4",
+            "send_to_workspace_5": "~/.local/bin/get_focused_sway_window_con_id.sh send_to_workspace 5",
+            "send_to_workspace_6": "~/.local/bin/get_focused_sway_window_con_id.sh send_to_workspace 6",
+            "send_to_workspace_7": "~/.local/bin/get_focused_sway_window_con_id.sh send_to_workspace 7",
+            "send_to_workspace_8": "~/.local/bin/get_focused_sway_window_con_id.sh send_to_workspace 8",
+            "send_to_workspace_9": "~/.local/bin/get_focused_sway_window_con_id.sh send_to_workspace 9",
+            "send_to_workspace_10": "~/.local/bin/get_focused_sway_window_con_id.sh send_to_workspace 10",
+        },
+    },
+
+    "custom/next_empty_workspace": {
+        "tooltip": false,
+        "format": "+",
+        "on-click": "~/.local/bin/focus_next_empty_sway_workspace.sh"
+    },
+
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": [""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}",
+        "on-click": "swaymsg -t command scratchpad show"
+    },
+
+    "custom/weather": {
+        "exec": "~/.local/bin/weather_waybar.py waybar",
+        "restart-interval": 300,
+        "return-type": "json"
+    },
+
+    "wireplumber": {
+        "tooltip": true,
+        "tooltip-format": "{}",
+        "return-type": "json",
+        "scroll-step": 1,
+        //"format": "{icon} {volume: >3}%",
+        //"format-bluetooth": "{icon} {volume: >3}%",
+        "format": "{volume}%",
+        "format-bluetooth": "{volume}%",
+        //"format-muted": " muted",
+        "format-muted": "muted",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +1%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -1%",
+        "on-click-right": "pavucontrol-qt"
+    },
+
+    // "custom/easyeffectspreset": {
+    //     "return-type": "json",
+    //     "signal": 5,
+    //     "exec": "~/.config/waybar/scripts/easyeffects_waybar_fuzzel_menu",
+        // "exec": "[ $(easyeffects -b 3) -eq 0 ] && printf '{\"text\": \"%s\"}' \"$(easyeffects -s output)\" || printf '{\"text\": \"Bypass On\"}'",
+        // "interval": 1,
+        // "format": "{}",
+        // "on-click": "~/.config/waybar/scripts/easyeffects_waybar_fuzzel_menu menu; pkill -SIGRTMIN+5 waybar",
+        // "on-click": "~/.config/waybar/scripts/easyeffects_preset_switcher; pkill -SIGRTMIN+5 waybar",
+        // "on-click-right": "~/.config/waybar/scripts/easyeffects_preset_switcher -reverse; pkill -SIGRTMIN+5 waybar",
+        // "on-click-middle": "[ $(easyeffects -b 3) -eq 0 ] && easyeffects -b 1 || easyeffects -b 2; pkill -SIGRTMIN+5 waybar"
+    // },
+
+    "clock": {
+        "timezone": "America/Argentina/Buenos_Aires",
+        "locale": "es_AR.UTF-8",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>S{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        },
+        //"format": " {:L%H:%M}",
+        //"format-alt": " {:L%d/%m/%Y  %H:%M:%S}",
+        "format": "{:L%H:%M}",
+        "format-alt": "{:L%d/%m/%Y %H:%M:%S}",
+        "interval": 1
+    },
+
+    "custom/clipboard":{
+        "format":"󰅍",
+        "tooltip":false,
+        "on-click": "~/.config/sway/scripts/clipboard_history.sh"
+    },
+
+    "custom/wvkbd": {
+        "return-type": "json",
+        "tooltip": true,
+        "signal": 7,
+        "exec": "~/.local/bin/get_wvkbd_status_waybar.sh",
+        "format": "{text}",
+        "hide-empty-text": true,
+        "on-click": "pkill -SIGRTMIN wvkbd-mobintl; pkill -SIGRTMIN+7 waybar"
+    },
+
+    "custom/gammastep": {
+        "return-type": "json",
+        "signal": 6,
+        "exec": "~/.local/bin/get_gammastep_status_waybar.sh",
+        "tooltip": true,
+        "format": "{icon}",
+        "format-icons": {
+            "on": "󰌶",
+            "off": "󰌵"
+        },
+        "menu": "on-click",
+        "menu-file": "~/.config/waybar/menu_files/gammastep_menu.xml",
+        "menu-actions": {
+            "3500k": "~/.local/bin/toggle_gammastep_status.sh 3500; pkill -SIGRTMIN+6 waybar",
+            "4000k": "~/.local/bin/toggle_gammastep_status.sh 4000; pkill -SIGRTMIN+6 waybar",
+            "5000k": "~/.local/bin/toggle_gammastep_status.sh 5000; pkill -SIGRTMIN+6 waybar",
+            "6500k": "~/.local/bin/toggle_gammastep_status.sh 6500; pkill -SIGRTMIN+6 waybar",
+        },
+    },
+
+    "custom/powermenu": {
+    "tooltip": false,
+    "format": "󰤆",
+    "on-click": "~/.local/bin/fuzzel_powermenu.sh"
+    },
+
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10,
+	      "show-passive-items": true
+    },
+
+    // "custom/power": {
+    //     "format" : "⏻ ",
+		  //   "tooltip": false,
+		  //   "menu": "on-click",
+		  //   "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+		  //   "menu-actions": {
+		  //   	  "shutdown": "shutdown",
+		  //   	  "reboot": "reboot",
+		  //   	  "suspend": "systemctl suspend",
+		  //   	  "hibernate": "systemctl hibernate"
+		  //   }
+    // },
+
+    // "sway/workspaces": {
+    //     "disable-scroll": true,
+    //     "all-outputs": true,
+    //     "warp-on-scroll": false,
+    //     "format": "{name}: {icon}",
+    //     "format-icons": {
+    //         "1": "",
+    //         "2": "",
+    //         "3": "",
+    //         "4": "",
+    //         "5": "",
+    //         "urgent": "",
+    //         "focused": "",
+    //         "default": ""
+    //     }
+    // },
+    //"keyboard-state": {
+    //    "numlock": true,
+    //    "capslock": true,
+    //    "format": "{name} {icon}",
+    //    "format-icons": {
+    //        "locked": "",
+    //        "unlocked": ""
+    //    }
+    //},
+    //"mpd": {
+    //    "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+    //    "format-disconnected": "Disconnected ",
+    //    "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+    //    "unknown-tag": "N/A",
+    //    "interval": 5,
+    //    "consume-icons": {
+    //        "on": " "
+    //    },
+    //    "random-icons": {
+    //        "off": "<span color=\"#f53c3c\"></span> ",
+    //        "on": " "
+    //    },
+    //    "repeat-icons": {
+    //        "on": " "
+    //    },
+    //    "single-icons": {
+    //        "on": "1 "
+    //    },
+    //    "state-icons": {
+    //        "paused": "",
+    //        "playing": ""
+    //    },
+    //    "tooltip-format": "MPD (connected)",
+    //    "tooltip-format-disconnected": "MPD (disconnected)"
+    //},
+    //"idle_inhibitor": {
+    //    "format": "{icon}",
+    //    "format-icons": {
+    //        "activated": "",
+    //        "deactivated": ""
+    //    }
+    //},
+    //"temperature": {
+    //    // "thermal-zone": 2,
+    //    // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    //    "critical-threshold": 80,
+    //    // "format-critical": "{temperatureC}°C {icon}",
+    //    "format": "{temperatureC}°C {icon}",
+    //    "format-icons": ["", "", ""]
+    //},
+    //"backlight": {
+    //    // "device": "acpi_video1",
+    //    "format": "{percent}% {icon}",
+    //    "format-icons": ["", "", "", "", "", "", "", "", ""]
+    //},
+    //"battery": {
+    //    "states": {
+    //        // "good": 95,
+    //        "warning": 30,
+    //        "critical": 15
+    //    },
+    //    "format": "{capacity}% {icon}",
+    //    "format-full": "{capacity}% {icon}",
+    //    "format-charging": "{capacity}% ",
+    //    "format-plugged": "{capacity}% ",
+    //    "format-alt": "{time} {icon}",
+    //    // "format-good": "", // An empty format will hide the module
+    //    // "format-full": "",
+    //    "format-icons": ["", "", "", "", ""]
+    //},
+    //"battery#bat2": {
+    //    "bat": "BAT2"
+    //},
+    //"power-profiles-daemon": {
+    //  "format": "{icon}",
+    //  "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    //  "tooltip": true,
+    //  "format-icons": {
+    //    "default": "",
+    //    "performance": "",
+    //    "balanced": "",
+    //    "power-saver": ""
+    //  }
+    //},
+    //"pulseaudio": {
+    //    // "scroll-step": 1, // %, can be a float
+    //   //"format": "{volume}% {icon} {format_source}",
+    //     "format": "{volume}% {icon}",
+    //    "format-bluetooth": "{volume}% {icon} {format_source}",
+    //    "format-bluetooth-muted": " {icon} {format_source}",
+    //   //"format-muted": " {format_source}",
+    //    "format-muted": "",
+    //    "format-source": "{volume}% ",
+    //    "format-source-muted": "",
+    //    "format-icons": {
+    //        "headphone": "",
+    //        "hands-free": "",
+    //        "headset": "",
+    //        "phone": "",
+    //        "portable": "",
+    //        "car": "",
+    //        "default": ["", "", ""]
+    //    },
+    //    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    //    "on-click-right": "~/.config/waybar/scripts/easyeffects.sh"
+    //},
+    //"custom/media": {
+    //    "format": "{icon} {}",
+    //    "return-type": "json",
+    //    "max-length": 40,
+    //    "format-icons": {
+    //        "spotify": "",
+    //        "default": "🎜"
+    //    },
+    //    "escape": true,
+    //    "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+    //    // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    //},
+    //"sway/language": {
+	  //    "format": "{short} {variant}"
+    //}
+}
