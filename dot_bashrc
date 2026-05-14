@@ -51,7 +51,7 @@ __ring_bell_on_command_done() {
 	fi
 }
 
-export PROMPT_COMMAND='history -a; __ring_bell_on_command_done'
+export PROMPT_COMMAND='__ring_bell_on_command_done; history -a'
 
 # Enable vi style editing.
 set -o vi
@@ -80,15 +80,18 @@ fi
 
 # [ -f ~/TODO ] && cat ~/TODO
 
-# Set the terminal title.
-# We put this at the bottom so the last command will be $PROMPT_COMMAND
 case "$TERM" in
 	"foot"|"alacritty")
+
+		[ -f ~/TODO ] && cat ~/TODO
+
+		# Set the terminal title.
+		# We put this at the bottom so the last command will be $PROMPT_COMMAND
 		title=""
 		trap '[ "$BASH_COMMAND" = "$PROMPT_COMMAND" ] \
 		&& title="$TERM - @ $PWD" \
 		|| title="$TERM - $BASH_COMMAND @ $PWD";
 		 printf "%b" "\e]0;$title\007"' DEBUG
-	 ;;
+	;;
 esac
 
