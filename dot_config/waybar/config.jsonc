@@ -240,7 +240,7 @@
         "exec": "~/.local/bin/get_wvkbd_status_waybar.sh",
         "format": "{text}",
         "hide-empty-text": true,
-        "on-click": "pkill -SIGRTMIN wvkbd-mobintl; pkill -SIGRTMIN+7 waybar"
+        "on-click": "pkill -SIGRTMIN wvkbd-deskintl; pkill -SIGRTMIN+7 waybar"
     },
 
     "custom/gammastep": {
