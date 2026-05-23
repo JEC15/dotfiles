@@ -27,32 +27,6 @@ export HISTSIZE=100000
 # Enable history appending instead of overwriting when exiting.
 shopt -s histappend
 
-# Save each command to the history file as it's executed.
-# This does mean sessions get interleaved when reading later on, but this
-# way the history is always up to date.  History is not synced across live
-# sessions though; that is what `history -n` does.
-# May cause issues related to system recovery when $HOME
-# is under duress, or lives somewhere flaky (like NFS).  Constantly syncing
-# the history will halt the shell prompt until it's finished.
-
-# Ring the terminal bell after each command completes.
-# Using 'tput bel' instead of 'echo -e "\a"' or 'printf "\a"' because:
-# - The DEBUG trap used for setting terminal titles interferes
-#   with direct BEL character output, causing visible garbage like
-#   '" @ /home/jec' to appear on screen.
-# - 'tput bel' sends the bell sequence through the terminal's terminfo
-#   database, which bypasses bash's escape sequence interpretation
-#   and avoids triggering DEBUG trap side effects.
-__ring_bell_on_command_done() {
-	if [[ -n "$__BELL_ENABLED" ]]; then
-		tput bel
-	else
-		export __BELL_ENABLED=1
-	fi
-}
-
-export PROMPT_COMMAND='__ring_bell_on_command_done; history -a'
-
 # Enable vi style editing.
 set -o vi
 
@@ -78,7 +52,25 @@ $([[ "$?" -eq 0 ]] && printf "\[\e[38;5;2m\]" || printf "\[\e[38;5;1m\]")\
 \[\e[00m\] '
 fi
 
-# [ -f ~/TODO ] && cat ~/TODO
+__prompt_cmd() {
+# Save each command to the history file as it's executed.
+# This does mean sessions get interleaved when reading later on, but this
+# way the history is always up to date.  History is not synced across live
+# sessions though; that is what `history -n` does.
+# May cause issues related to system recovery when $HOME
+# is under duress, or lives somewhere flaky (like NFS).  Constantly syncing
+# the history will halt the shell prompt until it's finished.
+  history -a
+
+# Ring the terminal bell after each command completes,
+# but disable it for the first prompt when opening the terminal.
+  if [[ -n "$__BELL_ENABLED" ]]; then
+    tput bel
+  else
+    export __BELL_ENABLED=1
+  fi
+}
+export PROMPT_COMMAND='__prompt_cmd'
 
 case "$TERM" in
 	"foot"|"alacritty")
