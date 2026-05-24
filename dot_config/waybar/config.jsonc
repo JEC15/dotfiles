@@ -104,37 +104,37 @@
     },
 
     "custom/focused_window": {
-        "exec": "~/.local/bin/get_focused_sway_window_name.sh",
+        "exec": "~/.config/waybar/scripts/get_focused_sway_window_name.sh",
         "tooltip": true,
         "max-length": 30,
         "format": "{}",
         "hide-empty-text": true,
-        "on-scroll-up": "~/.local/bin/cycle_sway_windows.py window prev",
-        "on-scroll-down": "~/.local/bin/cycle_sway_windows.py window next",
+        "on-scroll-up": "~/.config/waybar/scripts/cycle_sway_windows.py window prev",
+        "on-scroll-down": "~/.config/waybar/scripts/cycle_sway_windows.py window next",
         "menu": "on-click",
         "menu-file": "~/.config/waybar/menu_files/window_menu.xml",
         "menu-actions": {
-            "move_to_scratchpad": "~/.local/bin/get_focused_sway_window_con_id.sh move_to_scratchpad",
-            "kill_window": "~/.local/bin/get_focused_sway_window_con_id.sh kill_window",
-            "toggle_float": "~/.local/bin/get_focused_sway_window_con_id.sh toggle_float",
-            "toggle_border": "~/.local/bin/get_focused_sway_window_con_id.sh toggle_border",
-            "send_to_workspace_1": "~/.local/bin/get_focused_sway_window_con_id.sh send_to_workspace 1",
-            "send_to_workspace_2": "~/.local/bin/get_focused_sway_window_con_id.sh send_to_workspace 2",
-            "send_to_workspace_3": "~/.local/bin/get_focused_sway_window_con_id.sh send_to_workspace 3",
-            "send_to_workspace_4": "~/.local/bin/get_focused_sway_window_con_id.sh send_to_workspace 4",
-            "send_to_workspace_5": "~/.local/bin/get_focused_sway_window_con_id.sh send_to_workspace 5",
-            "send_to_workspace_6": "~/.local/bin/get_focused_sway_window_con_id.sh send_to_workspace 6",
-            "send_to_workspace_7": "~/.local/bin/get_focused_sway_window_con_id.sh send_to_workspace 7",
-            "send_to_workspace_8": "~/.local/bin/get_focused_sway_window_con_id.sh send_to_workspace 8",
-            "send_to_workspace_9": "~/.local/bin/get_focused_sway_window_con_id.sh send_to_workspace 9",
-            "send_to_workspace_10": "~/.local/bin/get_focused_sway_window_con_id.sh send_to_workspace 10",
+            "move_to_scratchpad": "~/.config/waybar/scripts/focused_sway_window.sh move_to_scratchpad",
+            "kill_window": "~/.config/waybar/scripts/focused_sway_window.sh kill_window",
+            "toggle_float": "~/.config/waybar/scripts/focused_sway_window.sh toggle_float",
+            "toggle_border": "~/.config/waybar/scripts/focused_sway_window.sh toggle_border",
+            "send_to_workspace_1": "~/.config/waybar/scripts/focused_sway_window.sh send_to_workspace 1",
+            "send_to_workspace_2": "~/.config/waybar/scripts/focused_sway_window.sh send_to_workspace 2",
+            "send_to_workspace_3": "~/.config/waybar/scripts/focused_sway_window.sh send_to_workspace 3",
+            "send_to_workspace_4": "~/.config/waybar/scripts/focused_sway_window.sh send_to_workspace 4",
+            "send_to_workspace_5": "~/.config/waybar/scripts/focused_sway_window.sh send_to_workspace 5",
+            "send_to_workspace_6": "~/.config/waybar/scripts/focused_sway_window.sh send_to_workspace 6",
+            "send_to_workspace_7": "~/.config/waybar/scripts/focused_sway_window.sh send_to_workspace 7",
+            "send_to_workspace_8": "~/.config/waybar/scripts/focused_sway_window.sh send_to_workspace 8",
+            "send_to_workspace_9": "~/.config/waybar/scripts/focused_sway_window.sh send_to_workspace 9",
+            "send_to_workspace_10": "~/.config/waybar/scripts/focused_sway_window.sh send_to_workspace 10",
         },
     },
 
     "custom/next_empty_workspace": {
         "tooltip": false,
         "format": "+",
-        "on-click": "~/.local/bin/focus_next_empty_sway_workspace.sh"
+        "on-click": "~/.config/waybar/scripts/focus_next_empty_sway_workspace.sh"
     },
 
     "sway/mode": {
@@ -151,7 +151,7 @@
     },
 
     "custom/weather": {
-        "exec": "~/.local/bin/weather_waybar.py waybar",
+        "exec": "~/.config/waybar/scripts/weather_waybar.py waybar",
         "restart-interval": 300,
         "return-type": "json"
     },
@@ -230,14 +230,14 @@
     "custom/clipboard":{
         "format":"󰅍",
         "tooltip":false,
-        "on-click": "~/.config/sway/scripts/clipboard_history.sh"
+        "on-click": "~/.config/waybar/scripts/clipboard_history.sh"
     },
 
     "custom/wvkbd": {
         "return-type": "json",
         "tooltip": true,
         "signal": 7,
-        "exec": "~/.local/bin/get_wvkbd_status_waybar.sh",
+        "exec": "~/.config/waybar/scripts/get_wvkbd_status_waybar.sh",
         "format": "{text}",
         "hide-empty-text": true,
         "on-click": "pkill -SIGRTMIN wvkbd-deskintl; pkill -SIGRTMIN+7 waybar"
@@ -246,7 +246,7 @@
     "custom/gammastep": {
         "return-type": "json",
         "signal": 6,
-        "exec": "~/.local/bin/get_gammastep_status_waybar.sh",
+        "exec": "~/.config/waybar/scripts/get_gammastep_status_waybar.sh",
         "tooltip": true,
         "format": "{icon}",
         "format-icons": {
@@ -256,17 +256,17 @@
         "menu": "on-click",
         "menu-file": "~/.config/waybar/menu_files/gammastep_menu.xml",
         "menu-actions": {
-            "3500k": "~/.local/bin/toggle_gammastep_status.sh 3500; pkill -SIGRTMIN+6 waybar",
-            "4000k": "~/.local/bin/toggle_gammastep_status.sh 4000; pkill -SIGRTMIN+6 waybar",
-            "5000k": "~/.local/bin/toggle_gammastep_status.sh 5000; pkill -SIGRTMIN+6 waybar",
-            "6500k": "~/.local/bin/toggle_gammastep_status.sh 6500; pkill -SIGRTMIN+6 waybar",
+            "3500k": "~/.config/waybar/scripts/toggle_gammastep_status.sh 3500; pkill -SIGRTMIN+6 waybar",
+            "4000k": "~/.config/waybar/scripts/toggle_gammastep_status.sh 4000; pkill -SIGRTMIN+6 waybar",
+            "5000k": "~/.config/waybar/scripts/toggle_gammastep_status.sh 5000; pkill -SIGRTMIN+6 waybar",
+            "6500k": "~/.config/waybar/scripts/toggle_gammastep_status.sh 6500; pkill -SIGRTMIN+6 waybar",
         },
     },
 
     "custom/powermenu": {
     "tooltip": false,
     "format": "󰤆",
-    "on-click": "~/.local/bin/fuzzel_powermenu.sh"
+    "on-click": "~/.config/waybar/scripts/fuzzel_powermenu.sh"
     },
 
     "tray": {
