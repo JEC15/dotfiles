@@ -41,7 +41,7 @@
     "custom/applications_menu": {
         "tooltip": false,
         "format": "󰍜",
-        "on-click": "rofi -show drun -theme ~/.config/rofi/waybar_launcher_menu.rasi"
+        "on-click": "~/.config/waybar/scripts/desktop_files_launcher.sh"
     },
 
     "cpu": {
