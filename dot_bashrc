@@ -18,6 +18,9 @@ shopt -s checkwinsize
 # and waiting a long time for bash to expand all of $PATH.
 shopt -s no_empty_cmd_completion
 
+# Set vim as default visual editor.
+export VISUAL=vim
+
 # Timestamps for history file.
 export HISTTIMEFORMAT='%d/%m/%y %T '
 
