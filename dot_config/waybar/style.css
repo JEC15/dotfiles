@@ -2,8 +2,10 @@
     /* `otf-font-awesome` is required to be installed for icons */
     min-height: 0;
     min-width: 0;
-    font-family: Arimo Nerd Font;
-    font-size: 14px;
+    /* font-family: Barlow Nerd Font SemiCondensed Medium; */
+    font-family: Terminess Nerd Font Propo;
+    /* font-weight: bold; */
+    font-size: 16px;
 }
 
 #custom-next_empty_workspace {
@@ -19,9 +21,12 @@
 }
 
 window#waybar {
-    background-color: #1d2021;
+    /* background-color: #1d2021; */
+    background-color: #031006;
     /*border-bottom: 3px solid rgba(100, 114, 125, 0.5);*/
-    color: #d4be98;
+    /* border: 1px solid #a6bab7; */
+    /* color: #d4be98; */
+    color: #a6bab7;
     /* transition-property: background-color; */
     /* transition-duration: .5s; */
 }
@@ -63,25 +68,27 @@ button:hover {
 }
 
 /* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: #a37800;
-}
+/* #pulseaudio:hover { */
+    /* background-color: #a37800; */
+/* } */
 
 #workspaces button {
     padding: 0 10px;
     background-color: transparent;
-    color: #d4be98;
+    /* color: #031006; */
+    color: #a6bab7;
 }
 
 #workspaces button:hover {
     /* background: rgba(0, 0, 0, 0.2); */
     /* background-color: #d79921; */
-    background-color: #32302f;
+    background-color: #03581e;
 }
 
 #workspaces button.focused {
     /* background-color: #ebdbb2; */
-    box-shadow: inset 0 -1px #d4be98;
+    box-shadow: inset 0 -1px #031006;
+    box-shadow: inset 0 -1px #a6bab7;
     /* color: #1d2021; */
 }
 
@@ -118,7 +125,7 @@ button:hover {
 
 #custom-focused_window {
     margin: 0px 5px 0px 0px;
-    box-shadow: inset 0 -1px #d4be98;
+    box-shadow: inset 0 -1px #03581e;
 }
 
 #custom-applications_menu,
@@ -130,23 +137,24 @@ button:hover {
     padding: 0 3px;
 }
 
-#custom-applications_menu:hover,
-#custom-focused_window:hover,
-#custom-next_empty_workspace:hover,
-#scratchpad:hover,
-#custom-move_to_scratchpad:hover,
-#custom-toggle_borders:hover,
-#custom-clipboard:hover,
-#wireplumber:hover,
-#custom-easyeffectspreset:hover,
-#clock:hover,
-#custom-wvkbd:hover,
-#custom-gammastep:hover,
-#custom-powermenu:hover {
-    background-color: #32302f;
-    /* color: #1d2021; */
+tooltip {
+    background: #031006;
+    color: #a6bab7;
+    border: 1px solid #03581e;
 }
 
+menu {
+    /* border-radius: 15px; */
+    background-color: #031006;
+    /*border-bottom: 3px solid rgba(100, 114, 125, 0.5);*/
+    /* color: #d4be98; */
+    color: #a6bab7;
+    /* background: #161320; */
+    /* color: #B5E8E0; */
+    border: 1px solid #03581e;
+    padding: 0px;
+    margin: 0px;
+}
 #cpu {
     padding: 0px 2px 0px 2px;
 }

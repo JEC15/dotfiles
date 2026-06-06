@@ -30,7 +30,7 @@ set enable-bracketed-paste on
 set show-mode-in-prompt on
 
 set vi-cmd-mode-string "\1\e[38;5;4m\2 cmd \1\e[0m\2"
-set vi-ins-mode-string "\1\e[38;5;5m\2 ins \1\e[0m\2"
+set vi-ins-mode-string "\1\e[38;5;2m\2 ins \1\e[0m\2"
 
 # $if term=linux
 # 	set vi-ins-mode-string \1\e[?8c\2
