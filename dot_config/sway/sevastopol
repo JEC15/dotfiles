@@ -1,0 +1,25 @@
+# Colors (Sevastopol)
+
+# Default colors
+set $background #031006
+set $foreground #95b8af
+
+# Normal colors
+set $black          #02361f
+set $red            #b12e12
+set $green          #01893f
+set $yellow         #B6802B
+set $blue           #03581e
+set $magenta        #BE4B6A
+set $cyan           #4da2a1
+set $white          #a6bab7
+
+# Bright colors
+set $bright_black   #3c3836
+set $bright_red     #3c3836
+set $bright_green   #8BBF9F
+set $bright_yellow  #d8a657
+set $bright_blue    #89b482
+set $bright_magenta #d3869b
+set $bright_cyan    #75A99D
+set $bright_white   #d4be98
