@@ -4,6 +4,7 @@
     "layer": "top",
     "height": 24,
     "spacing": 0,
+    "reload_style_on_change": true,
 
     "modules-left": [
         // "cffi/applauncher",
