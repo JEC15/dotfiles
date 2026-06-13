@@ -38,11 +38,6 @@ export MANPAGER="less -R --use-color -Dd+r -Du+b"
 # But pass -c to groff to remove all color first.
 export MANROFFOPT="-P -c"
 
-# Relocate Helium browser's cache to tmpfs and set its max size to 300MiB.
-# These flags will be picked up by helium-wrapper:
-# https://aur.archlinux.org/cgit/aur.git/tree/0001-update-wrapper-arch.patch?h=helium-browser-bin
-export HELIUM_USER_FLAGS="--disk-cache-dir=$XDG_RUNTIME_DIR/helium-cache --disk-cache-size=314572800"
-
 ### Prompt
 # For direxpand to be missing indicates that bash is lacking readline support.
 # Define a prompt without color.
