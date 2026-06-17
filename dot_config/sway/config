@@ -32,7 +32,7 @@ set $down j
 set $up k
 set $right l
 
-set $wrapper ~/.local/bin/sway_exec_wrapper.sh
+set $wrapper ~/.config/sway/scripts/sway_exec_wrapper.sh
 
 set $term foot -m
 set $floating_term foot --app-id=foot_float -o colors-dark.alpha=0.75
