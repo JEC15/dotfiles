@@ -1,0 +1,116 @@
+"attribute" = "yellow"
+
+"comment" = "light-gray2"
+"comment.block" = "red"
+"comment.block.documentation" = "red"
+"comment.line" = "light-green"
+"comment.line.documentation" = "light-green"
+"constant" = "light-gray"
+"constant.builtin" = "red"
+"constant.character.escape" = "light-cyan"
+"constant.numeric" = "light-magenta"
+"constructor" = "cyan"
+
+"debug" = "gray"
+
+"diagnostic" = { modifiers = ["underlined"] }
+
+"diff.delta" = "yellow"
+"diff.minus" = "light-red"
+"diff.plus" = "light-green"
+
+"error" = "light-red"
+
+"function" = "blue"
+"function.builtin" = "cyan"
+"function.method" = "cyan"
+"function.method.private" = "cyan"
+
+"hint" = "gray"
+
+"info" = "light-blue"
+
+"keyword" = "yellow"
+"keyword.control.import" = "magenta"
+
+"label" = "light-gray"
+
+"markup.bold" = { fg = "light-yellow", modifiers = ["bold"] }
+"markup.heading" = "light-magenta"
+"markup.italic" = { fg = "light-magenta", modifiers = ["italic"] }
+"markup.link.url" = { fg = "yellow", modifiers = ["underlined"] }
+"markup.link.text" = "light-red"
+"markup.list" = "light-red"
+"markup.quote" = "light-cyan"
+"markup.raw" = "light-green"
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+
+"namespace" = "light-gray"
+
+"operator" = "magenta"
+
+"punctuation" = "white"
+
+"special" = "light-blue"
+
+"string"  = "red"
+
+"type" = "green"
+"type.builtin" = "cyan"
+
+"ui.background" = { fg = "light-gray", bg = "background" }
+"ui.background.separator" = "white"
+"ui.cursor" = { fg = "light-gray", modifiers = ["reversed"] }
+"ui.cursor.match" = { fg = "light-blue", underline = { style = "line" } }
+"ui.cursor.primary" = { fg = "light-gray", modifiers = ["reversed"] }
+"ui.cursorline.primary" = { bg = "gray" }
+"ui.help" = { fg = "light-gray", bg = "black" }
+"ui.menu" = { fg = "light-gray", bg = "black" }
+"ui.menu.selected" = { modifiers = ["reversed"] }
+"ui.linenr" = "yellow"
+"ui.linenr.selected" = "light-yellow"
+"ui.popup" = { bg = "black" }
+"ui.selection" = { fg = "light-gray3", modifiers = ["reversed"] }
+"ui.statusline" = { fg = "background", bg = "cyan" }
+"ui.statusline.inactive" = { fg = "white", bg = "black" }
+"ui.text.focus" = { fg = "black", bg = "light-gray" }
+"ui.virtual.whitespace" = "light-gray3"
+"ui.virtual.jump-label" = { fg = "green", modifiers = ["bold", "underlined"] }
+"ui.virtual.ruler" = { bg = "black" }
+"ui.window" = { fg = "gray", bg = "gray" }
+
+"variable" = "light-gray"
+"variable.other.member" = "yellow"
+
+"warning" = "yellow"
+
+[palette]
+# Colors (Sevastopol)
+
+### Terminal palette
+default =      "#95b8af"
+# Normal colors
+black   =         "#02361f"
+red     =         "#b12e12"
+green   =         "#01893f"
+yellow  =         "#B6802B"
+# blue    =         "#03581e"
+blue    =         "#046d25"
+magenta =         "#BE4B6A"
+cyan    =         "#4da2a1"
+white   =         "#a6bab7"
+# Bright colors
+gray          =  "#212421"
+light-red     =  "#ea6962"
+light-green   =  "#8BBF9F"
+light-yellow  =  "#d8a657"
+light-blue    =  "#89b482"
+light-magenta =  "#d3869b"
+light-cyan    =  "#75A99D"
+light-gray    =  "#d4be98"
+
+### Other colors
+background =      "#031006"
+light-gray1 = "#3a4d47"
+light-gray2 = "#455952"
+light-gray3 = "#5c7068"

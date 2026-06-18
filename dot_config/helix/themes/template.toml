@@ -1,0 +1,65 @@
+# Uses terminal colors
+
+"ui.menu" = { fg = "", bg = "" }
+"ui.menu.selected" = { modifiers = [""] }
+"ui.linenr" = ""
+"ui.popup" = { bg = "" }
+"ui.window" = { bg = "" }
+"ui.linenr.selected" = ""
+"ui.selection" = { fg = "", modifiers = [""] }
+"ui.text.focus" = { fg = "", bg = "" }
+"comment" = ""
+"comment.line" = ""
+"comment.line.documentation" = ""
+"comment.block" = ""
+"comment.block.documentation" = ""
+"ui.statusline" = { fg = "", bg = "" }
+"ui.statusline.inactive" = { fg = "", bg = "" }
+"ui.help" = { fg = "", bg = "" }
+"ui.cursor" = { fg = "", modifiers = [""] }
+"ui.cursor.match" = { fg = "", modifiers = [""] }
+"ui.cursor.primary" = { fg = "", modifiers = [""] }
+"ui.virtual.whitespace" = ""
+"ui.virtual.jump-label" = { fg = "", modifiers = ["", ""] }
+"ui.virtual.ruler" = { bg = "" }
+"variable" = ""
+"constant.numeric" = ""
+"constant" = ""
+"constant.builtin" = ""
+"attribute" = ""
+"type" = ""
+"type.builtin" = ""
+"string"  = ""
+"variable.other.member" = ""
+"constant.character.escape" = ""
+"function.builtin" = ""
+"function.method" = ""
+"function.method.private" = ""
+"function" = ""
+"constructor" = ""
+"special" = ""
+"keyword" = ""
+"keyword.control.import" = ""
+"label" = ""
+"namespace" = ""
+
+"markup.heading" = ""
+"markup.list" = ""
+"markup.bold" = { fg = "", modifiers = [""] }
+"markup.italic" = { fg = "", modifiers = [""] }
+"markup.strikethrough" = { modifiers = [""] }
+"markup.link.url" = { fg = "", modifiers = [""] }
+"markup.link.text" = ""
+"markup.quote" = ""
+"markup.raw" = ""
+
+"diff.plus" = ""
+"diff.delta" = ""
+"diff.minus" = ""
+
+"diagnostic" = { modifiers = [""] }
+"info" = ""
+"hint" = ""
+"debug" = ""
+"warning" = ""
+"error" = ""
