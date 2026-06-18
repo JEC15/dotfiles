@@ -1,0 +1,32 @@
+[general]
+import = ["/home/jec/.config/alacritty/themes/solarized_dark.toml"]
+
+# [cursor]
+# blink_interval = 500
+# blink_timeout = 0
+
+[cursor.style]
+blinking = "off"
+
+[font]
+size = 10
+
+[font.bold_italic]
+family = "IosevkaTerm NF"
+style = "Bold Italic"
+
+[font.italic]
+family = "IosevkaTerm NF"
+style = "Italic"
+
+[font.bold]
+family = "IosevkaTerm NF"
+style = "Bold"
+
+[font.normal]
+family = "IosevkaTerm NF"
+style = "Regular"
+
+[window]
+opacity = 1.00
+
