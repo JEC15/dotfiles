@@ -15,5 +15,6 @@ if [ "$(tty)" = "/dev/tty1" ]; then
 
     export QT_QPA_PLATFORMTHEME=qt6ct
 
-    exec dbus-run-session sway > /tmp/sway.log 2>&1
+    # exec dbus-run-session sway > /tmp/sway.log 2>&1
+    exec sway > /tmp/sway.log 2>&1
 fi
