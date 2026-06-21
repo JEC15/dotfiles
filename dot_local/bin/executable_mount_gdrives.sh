@@ -10,6 +10,11 @@
   exit 1
 }
 
+! command -v fusermount3 >/dev/null && {
+  printf "%s\n" "Could not find command: fusermount3." >&2
+  exit 1
+}
+
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -75,7 +80,7 @@ unmount_remote() {
     fi
 
     echo -e "${BLUE}→ Unmounting ${YELLOW}${remote}${BLUE}...${NC}"
-    if fusermount -uz "$mount_point" 2>/dev/null; then
+    if fusermount3 -uz "$mount_point" 2>/dev/null; then
         echo -e "${GREEN}✓ Unmounted${NC}"
         rmdir "$mount_point" 2>/dev/null
         return 0
