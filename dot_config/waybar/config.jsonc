@@ -247,20 +247,21 @@
     "custom/gammastep": {
         "return-type": "json",
         "signal": 6,
-        "exec": "~/.config/waybar/scripts/get_gammastep_status_waybar.sh",
+        "exec": "~/.config/waybar/scripts/gammastep.sh",
         "tooltip": true,
         "format": "{icon}",
         "format-icons": {
+            "not_installed": "X",
             "on": "󰌶",
             "off": "󰌵"
         },
         "menu": "on-click",
         "menu-file": "~/.config/waybar/menu_files/gammastep_menu.xml",
         "menu-actions": {
-            "3500k": "~/.config/waybar/scripts/toggle_gammastep_status.sh 3500; pkill -SIGRTMIN+6 waybar",
-            "4000k": "~/.config/waybar/scripts/toggle_gammastep_status.sh 4000; pkill -SIGRTMIN+6 waybar",
-            "5000k": "~/.config/waybar/scripts/toggle_gammastep_status.sh 5000; pkill -SIGRTMIN+6 waybar",
-            "6500k": "~/.config/waybar/scripts/toggle_gammastep_status.sh 6500; pkill -SIGRTMIN+6 waybar",
+            "3500k": "~/.config/waybar/scripts/gammastep.sh 3500; pkill -SIGRTMIN+6 waybar",
+            "4000k": "~/.config/waybar/scripts/gammastep.sh 4000; pkill -SIGRTMIN+6 waybar",
+            "5000k": "~/.config/waybar/scripts/gammastep.sh 5000; pkill -SIGRTMIN+6 waybar",
+            "6500k": "~/.config/waybar/scripts/gammastep.sh 6500; pkill -SIGRTMIN+6 waybar",
         },
     },
 
