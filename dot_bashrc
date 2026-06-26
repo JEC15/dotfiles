@@ -41,6 +41,9 @@ export MANPAGER="less -R --use-color -Dd+r -Du+b"
 # But pass -c to groff to remove all color first.
 export MANROFFOPT="-P -c"
 
+# Fzf keu bindings and fuzzy completion.
+command -v fzf > /dev/null 2 >&1 && eval "$(fzf --bash)"
+
 ### Prompt
 # For direxpand to be missing indicates that bash is lacking readline support.
 # Define a prompt without color.
