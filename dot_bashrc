@@ -21,6 +21,9 @@ shopt -s no_empty_cmd_completion
 # Set vim as default visual editor.
 export VISUAL=vim
 
+# Set helix as sudoeditor.
+export SUDO_EDITOR=hx
+
 # Timestamps for history file.
 export HISTTIMEFORMAT='%d/%m/%y %T '
 
