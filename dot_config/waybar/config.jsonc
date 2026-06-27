@@ -237,11 +237,14 @@
     "custom/wvkbd": {
         "return-type": "json",
         "tooltip": true,
-        "signal": 7,
-        "exec": "~/.config/waybar/scripts/get_wvkbd_status_waybar.sh",
-        "format": "{text}",
-        "hide-empty-text": true,
-        "on-click": "pkill -SIGRTMIN wvkbd-deskintl; pkill -SIGRTMIN+7 waybar"
+        "exec": "~/.config/waybar/scripts/wvkbd.sh",
+        "format": "{icon}",
+        "format-icons": {
+            "not_installed": "X",
+            "off": "X",
+            "on": "",
+        },
+        "on-click": "pkill -SIGRTMIN wvkbd-deskintl"
     },
 
     "custom/gammastep": {

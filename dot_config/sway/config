@@ -108,8 +108,6 @@ exec $wrapper /usr/lib/polkit-kde-authentication-agent-1
 exec $wrapper wl-paste --type text --watch cliphist store
 exec $wrapper wl-paste --type images --watch cliphist store
 
-exec_always $wrapper sh -c "[ ! $(pidof wvkbd-deskintl) ] && wvkbd-deskintl --hidden -L 180"
-
 
 ### Key bindings
 #
