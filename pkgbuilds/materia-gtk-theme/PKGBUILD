@@ -1,0 +1,31 @@
+# Maintainer: JEC15 <86543250+JEC15@users.noreply.github.com>
+
+# Based on: https://archlinux.org/packages/extra/any/materia-gtk-theme/
+
+pkgname='sevastopol-gtk-theme'
+pkgver=r1652.d7f59a3
+pkgrel=1
+pkgdesc="A Material Design theme for GNOME/GTK+ based desktop environments"
+arch=(any)
+url='https://github.com/JEC15/materia-theme'
+license=(GPL)
+makedepends=('git' 'meson' 'dart-sass' 'gtk3' 'gtk4' 'gnome-shell')
+provides=('materia-theme')
+conflicts=('materia-theme')
+source=("${pkgname}::git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  # git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  arch-meson build ${pkgname}
+  meson compile -C build
+}
+
+package() {
+  DESTDIR="${pkgdir}" meson install -C build
+}

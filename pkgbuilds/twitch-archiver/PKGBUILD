@@ -1,0 +1,44 @@
+# Maintainer: JEC15 <86543250+JEC15@users.noreply.github.com>
+
+pkgname='twitch-archiver'
+pkgver=4.4.8.r0.gaedd9fa
+pkgrel=1
+pkgdesc='Platform-independent tool for downloading Twitch streams, videos and chat logs.'
+arch=('any')
+url='https://github.com/Brisppy/twitch-archiver'
+license=('AGPL-3.0-only')
+depends=('python' 'python-'{requests,m3u8} 'ffmpeg')
+checkdepends=("python-"{pytest,requests-mock})
+makedepends=('git' 'python-'{build,installer,setuptools,wheel})
+provides=('twitch-archiver')
+conflicts=('twitch-archiver')
+source=("git+$url")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  git -C "${srcdir}/${pkgname}" clean -dfx
+}
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd ${pkgname}
+  python -m installer --destdir="$PWD/tmp" dist/*.whl
+  local pyver=$(python -c 'import sys;print(".".join(map(str,sys.version_info[:2])))')
+  PYTHONPATH="$PWD/tmp/usr/lib/python${pyver}/site-packages:$PYTHONPATH" python -m pytest
+}
+
+package() {
+  cd "${srcdir}/${pkgname}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+

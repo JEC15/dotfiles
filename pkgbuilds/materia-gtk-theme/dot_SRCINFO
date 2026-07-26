@@ -1,0 +1,19 @@
+pkgbase = sevastopol-gtk-theme
+	pkgdesc = A Material Design theme for GNOME/GTK+ based desktop environments
+	pkgver = r1652.d7f59a3
+	pkgrel = 1
+	url = https://github.com/JEC15/materia-theme
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = dart-sass
+	makedepends = gtk3
+	makedepends = gtk4
+	makedepends = gnome-shell
+	provides = materia-theme
+	conflicts = materia-theme
+	source = sevastopol-gtk-theme::git+https://github.com/JEC15/materia-theme.git
+	sha256sums = SKIP
+
+pkgname = sevastopol-gtk-theme

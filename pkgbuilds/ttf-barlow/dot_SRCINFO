@@ -1,0 +1,14 @@
+pkgbase = ttf-barlow-nerd
+	pkgdesc = Grotesk font based inspired by the California state car plates and road signs, NerdFonts patched.
+	pkgver = 1.422
+	pkgrel = 1
+	url = https://tribby.com/fonts/barlow/
+	arch = any
+	license = OFL
+	makedepends = font-patcher
+	provides = ttf-barlow
+	conflicts = ttf-barlow
+	source = ttf-barlow-nerd-1.422.tar.gz::https://github.com/jpt/barlow/archive/refs/tags/1.422.tar.gz
+	sha256sums = f4bc7fd2802844deead4d19634b9c4d11710624a48fcfd7196821e353159c048
+
+pkgname = ttf-barlow-nerd

@@ -1,0 +1,31 @@
+# Maintainer: JEC15 <86543250+JEC15@users.noreply.github.com>
+
+# Based on: https://aur.archlinux.org/packages/wvkbd-git
+# Clone URL: https://aur.archlinux.org/wvkbd-git.git
+
+pkgname='wvkbd-deskintl-git'
+pkgver=0.19.4.r10.gea7593d
+pkgrel=1
+pkgdesc='On-screen keyboard for wlroots. Git version, desktop layout.'
+url='https://git.sr.ht/~proycon/wvkbd'
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+license=('GPL3')
+depends=('wayland' 'pango' 'cairo' 'glibc')
+makedepends=('git' 'fontconfig' 'libxkbcommon' 'scdoc')
+conflicts=('wvkbd')
+provides=('wvkbd')
+source=("git+https://git.sr.ht/~proycon/wvkbd")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname%-deskintl-git}"
+  git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  make LAYOUT=deskintl -C "${pkgname%-deskintl-git}"
+}
+
+package() {
+  make LAYOUT=deskintl -C "${pkgname%-deskintl-git}" PREFIX=/usr DESTDIR="$pkgdir" install
+}

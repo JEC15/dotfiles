@@ -1,0 +1,111 @@
+# Maintainer: JEC15 <86543250+JEC15@users.noreply.github.com>
+
+# Based on: https://aur.archlinux.org/packages/chatterino2-git
+# Clone URL: https://aur.archlinux.org/chatterino2-git.git
+
+pkgname=chatterino2-JEC15-git
+_pkgname=chatterino2
+pkgver=nightly.build.r0.g4c7efe0
+pkgrel=1
+pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/git version'
+arch=('x86_64' 'aarch64')
+url='https://github.com/JEC15/chatterino2'
+license=('MIT')
+depends=('qt6-base' 'qt6-tools' 'boost-libs' 'openssl' 'qt6-imageformats' 'qtkeychain-qt6' 'qt6-svg' 'libnotify' 'hunspell')
+makedepends=('git' 'boost' 'cmake' 'rapidjson')
+optdepends=('streamlink: For piping streams to video players'
+            'pulseaudio: For audio output'
+            'qt6-wayland: For Wayland support')
+provides=('chatterino')
+conflicts=('chatterino')
+install=$pkgname.install
+source=("git+https://github.com/JEC15/chatterino2"
+        "git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake"
+        "git+https://github.com/pajlada/settings"
+        "git+https://github.com/pajlada/signals"
+        "git+https://github.com/pajlada/serialize"
+        "git+https://github.com/Neargye/magic_enum"
+        "git+https://github.com/mackron/miniaudio"
+        "git+https://github.com/lua/lua"
+        "git+https://github.com/ThePhD/sol2"
+        "git+https://github.com/Chatterino/certify"
+        "git+https://github.com/martinmoene/expected-lite")
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
+
+pkgver() {
+    cd "$srcdir/chatterino2"
+    git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    # printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+
+}
+
+prepare () {
+    cd "$srcdir/$_pkgname"
+    # Disable updating of unused submodules
+    git config submodule.cmake/sanitizers-cmake.update "none"
+    git config submodule.lib/rapidjson.update "none"
+    git config submodule.tools/crash-handler.update "none"
+    git config submodule.lib/googletest.update "none"
+    git config submodule.lib/twitch-eventsub-ws/lib/date.update "none"
+    git config submodule.lib/twitch-eventsub-ws/lib/fmt.update "none"
+    git config submodule.lib/WinToast.update "none"
+    git config submodule.lib/qtkeychain.update "none"
+    git submodule init
+    git config submodule.lib/libcommuni.url "$srcdir/libcommuni"
+    git config submodule.lib/settings.url "$srcdir/settings"
+    git config submodule.lib/signals.url "$srcdir/signals"
+    git config submodule.lib/serialize.url "$srcdir/serialize"
+    git config submodule.lib/miniaudio.url "$srcdir/miniaudio"
+    git config submodule.lib/magicenum.url "$srcdir/magicenum"
+    git config submodule.lib/sol2.url "$srcdir/sol2"
+    git config submodule.lib/lua/src.url "$srcdir/lua"
+    git config submodule.lib/certify.url "$srcdir/certify"
+    git config submodule.lib/expected-lite.url "$srcdir/expected-lite"
+    git -c protocol.file.allow=always submodule update
+}
+
+build() {
+    cd "$srcdir/chatterino2"
+    mkdir -p build
+    cd build
+    declare -a flags
+    if [[ $CXXFLAGS == *"-flto"* ]]; then
+        flags+=("-DCHATTERINO_LTO=ON")
+    fi
+    cmake \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DUSE_SYSTEM_QTKEYCHAIN=ON \
+        -DUSE_PRECOMPILED_HEADERS=OFF \
+        -DCHATTERINO_UPDATER=OFF \
+        -DSKIP_JSON_GENERATION=ON \
+        -DCHATTERINO_SPELLCHECK=ON \
+        "${flags[@]}" \
+        ..
+    cmake --build .
+}
+
+package() {
+    cd "$srcdir/chatterino2"
+    if [ -f "build/bin/chatterino" ] && [ -x "build/bin/chatterino" ]; then
+        echo "Getting chatterino binary from bin folder"
+        install -Dm755 "build/bin/chatterino" "$pkgdir/usr/bin/chatterino"
+    else
+        echo "Getting chatterino binary from NON-BIN folder"
+        # System ccache is enabled, causing the binary file to not fall into the bin folder
+        # Temporary solution until we have figured out a way to stabilize the ccache output
+        install -Dm755 "build/chatterino" "$pkgdir/usr/bin/chatterino"
+    fi
+    install -Dm644 "resources/com.chatterino.chatterino.desktop" "$pkgdir/usr/share/applications/com.chatterino.chatterino.desktop"
+    install -Dm644 "resources/icon.png" "$pkgdir/usr/share/pixmaps/com.chatterino.chatterino.png"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

@@ -1,0 +1,24 @@
+pkgbase = wvkbd-deskintl-git
+	pkgdesc = On-screen keyboard for wlroots. Git version, desktop layout.
+	pkgver = 0.19.4.r10.gea7593d
+	pkgrel = 1
+	url = https://git.sr.ht/~proycon/wvkbd
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = fontconfig
+	makedepends = libxkbcommon
+	makedepends = scdoc
+	depends = wayland
+	depends = pango
+	depends = cairo
+	depends = glibc
+	provides = wvkbd
+	conflicts = wvkbd
+	source = git+https://git.sr.ht/~proycon/wvkbd
+	sha512sums = SKIP
+
+pkgname = wvkbd-deskintl-git

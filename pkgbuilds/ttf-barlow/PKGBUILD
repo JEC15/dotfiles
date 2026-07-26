@@ -1,0 +1,33 @@
+# Maintainer: JEC15 <86543250+JEC15@users.noreply.github.com>
+
+# Based on: https://aur.archlinux.org/packages/ttf-barlow
+# Clone URL: https://aur.archlinux.org/ttf-barlow.git
+# Additional source: https://aur.archlinux.org/packages/ttf-atkinson-hyperlegible-nerd
+
+pkgdesc='Grotesk font based inspired by the California state car plates and road signs, NerdFonts patched.'
+pkgname=ttf-barlow-nerd
+pkgver=1.422
+pkgrel=1
+url='https://tribby.com/fonts/barlow/'
+arch=('any')
+license=('OFL')
+provides=('ttf-barlow')
+conflicts=('ttf-barlow')
+makedepends=('font-patcher') #AUR
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jpt/barlow/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('f4bc7fd2802844deead4d19634b9c4d11710624a48fcfd7196821e353159c048')
+
+build() {
+  cd "$srcdir/barlow-$pkgver"
+  mkdir patched-fonts
+  # parallel font-patcher
+  find fonts/ttf -name '*.ttf' \
+  | xargs -I {} -P $(nproc) \
+  fontforge -script /usr/share/font-patcher/font-patcher \
+  --complete --careful --outputdir patched-fonts/ "{}"
+}
+
+package () {
+  cd "barlow-$pkgver"
+  install -Dm644 -t "${pkgdir}/usr/share/fonts/${pkgname}" patched-fonts/*.ttf
+}

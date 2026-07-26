@@ -1,0 +1,24 @@
+pkgbase = twitch-archiver
+	pkgdesc = Platform-independent tool for downloading Twitch streams, videos and chat logs.
+	pkgver = 4.4.8.r0.gaedd9fa
+	pkgrel = 1
+	url = https://github.com/Brisppy/twitch-archiver
+	arch = any
+	license = AGPL-3.0-only
+	checkdepends = python-pytest
+	checkdepends = python-requests-mock
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	depends = python-m3u8
+	depends = ffmpeg
+	provides = twitch-archiver
+	conflicts = twitch-archiver
+	source = git+https://github.com/Brisppy/twitch-archiver
+	sha256sums = SKIP
+
+pkgname = twitch-archiver
