@@ -25,8 +25,7 @@ window#waybar {
     background-color: #031006;
     /* border-bottom: 2px solid #03581e; */
     /* border: 1px solid #01893f; */
-    /* color: #d4be98; */
-    color: #a6bab7;
+    color: #d4be98;
     /* transition-property: background-color; */
     /* transition-duration: .5s; */
 }
@@ -76,7 +75,7 @@ button:hover {
     padding: 0 10px;
     background-color: transparent;
     /* color: #031006; */
-    color: #a6bab7;
+    color: #d4be98;
 }
 
 #workspaces button:hover {
