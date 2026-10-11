@@ -32,8 +32,6 @@ set $down j
 set $up k
 set $right l
 
-set $wrapper ~/.config/sway/scripts/sway_exec_wrapper.sh
-
 set $term foot -m
 set $floating_term foot --app-id=foot_float -o colors-dark.alpha=0.75
 
@@ -103,10 +101,10 @@ input "6700:11555:USB_USB_Keyboard" {
 
 exec_always ~/.config/sway/scripts/import-gsettings.sh
 
-exec $wrapper /usr/lib/polkit-kde-authentication-agent-1
+exec /usr/lib/polkit-kde-authentication-agent-1
 
-exec $wrapper wl-paste --type text --watch cliphist store
-exec $wrapper wl-paste --type images --watch cliphist store
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type images --watch cliphist store
 
 
 ### Key bindings
@@ -114,30 +112,30 @@ exec $wrapper wl-paste --type images --watch cliphist store
 # Basics:
 #
     # Start floating terminal
-    bindsym $mod+Return exec $wrapper $floating_term
+    bindsym $mod+Return exec $floating_term
 
     # Start terminal
-    bindsym $mod+Shift+Return exec $wrapper $term
+    bindsym $mod+Shift+Return exec $term
 
     # Kill focused window
     bindsym $mod+c kill
 
     # Dmenu launcher
-    bindsym $mod+d exec $wrapper $application_launcher
+    bindsym $mod+d exec $application_launcher
 
     # Desktop files launcher
-    bindsym $mod+u exec $wrapper $desktop_files_laucher
+    bindsym $mod+u exec $desktop_files_laucher
 
     # Open clipboard
-    bindsym $mod+i exec $wrapper $clipboard
+    bindsym $mod+i exec $clipboard
 
     # Open file manager
-    bindsym $mod+m exec $wrapper $file_manager
+    bindsym $mod+m exec $file_manager
 
     # Screenshots
-    bindsym $mod+p exec $wrapper ~/.config/sway/scripts/screenshot.sh
+    bindsym $mod+p exec ~/.config/sway/scripts/screenshot.sh
 
-    bindsym $mod+F1 exec $wrapper ~/.local/bin/record_with_audio.sh
+    bindsym $mod+F1 exec ~/.local/bin/record_with_audio.sh
     bindsym $mod+F2 exec pkill wf-recorder
 
     # Drag floating windows by holding down $mod and left mouse button.
@@ -336,6 +334,6 @@ for_window [shell="xwayland"] title_format "[XWayland] %title"
 #    swaybar_command waybar
 #}
 
-exec_always $wrapper ~/.config/sway/scripts/start_waybar.sh
+exec_always ~/.config/sway/scripts/start_waybar.sh
 
-exec_always $wrapper ~/.config/sway/scripts/set_random_wallpaper.sh
+exec_always ~/.config/sway/scripts/set_random_wallpaper.sh
