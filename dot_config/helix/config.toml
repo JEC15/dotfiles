@@ -65,3 +65,6 @@ enable = true
 
 [editor.word-completion]
 trigger-length = 4
+
+[keys.insert]
+j = { k = "normal_mode" }
