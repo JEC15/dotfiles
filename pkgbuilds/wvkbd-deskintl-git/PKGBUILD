@@ -4,7 +4,7 @@
 # Clone URL: https://aur.archlinux.org/wvkbd-git.git
 
 pkgname='wvkbd-deskintl-git'
-pkgver=0.19.4.r10.gea7593d
+pkgver=0.21.r0.gf7e9ea3
 pkgrel=1
 pkgdesc='On-screen keyboard for wlroots. Git version, desktop layout.'
 url='https://git.sr.ht/~proycon/wvkbd'
